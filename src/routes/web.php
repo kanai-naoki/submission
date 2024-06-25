@@ -16,10 +16,11 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [ContactController::class, 'index']);
-/*入力内容確認ページへ遷移するためのルーティング*/
 Route::post('/confirm', [ContactController::class, 'confirm']);
-/*登録する際のルーティングをどのように設定するか、調べる*/
-Route::post('/', [ContactController::class, 'store']);
+Route::post('/contacts', [ContactController::class, 'store']);
+Route::delete('/contacts/delete', [ContactController::class, 'destroy']);
+
+Route::post('/users', [UserController::class, 'store']);
 
 
 

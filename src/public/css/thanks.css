@@ -1,0 +1,25 @@
+.thanks__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+    display: flex;
+    flex-flow: column;
+}
+
+.thanks__heading {
+    text-align: center;
+    color: #8B79690D;;
+}
+
+.home_bottom {
+    text-align: center;
+    background: #8B79690D;;
+}
+
+.home_bottom_inner {
+    color: white;
+}
+
+.background_text {
+    text-align: center;
+}

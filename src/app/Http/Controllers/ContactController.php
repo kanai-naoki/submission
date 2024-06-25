@@ -29,6 +29,7 @@ class ContactController extends Controller
 
     public function destroy($request)
     {
-
+        Contact::find($request->id)->delete();
+        return redirect('/');
     }
 }
