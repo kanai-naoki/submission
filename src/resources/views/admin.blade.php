@@ -21,19 +21,21 @@
 <main>
 
   <div class="search_area">
-    <form action="" post="get">
-        <input type="search" >
+    <form action="/contacts" method="get">{{--getかpostなのか調べる必要あり--}}
+        <input type="search" name="search" placeholder="名前や性別を入力してください">
         <select name="gender" id="">性別
             <option value="">全て</option>
-            <option value="">男性</option>
-            <option value="">女性</option>
-            <option value="">その他</option>
+            <option value="1">男性</option>
+            <option value="2">女性</option>
+            <option value="3">その他</option>
         </select>
         <select name="content" id="">お問い合わせの種類
             @foreach ($catagories as $category)
             <option value="">{{ $category->'content' }}</option>
         </select>
-        <input type="date">
+        <input type="date" name="date" value="">
+        <input type="submit" name="submit" value="検索">
+        <input type="reset" value="リセット">
     </form>
   </div>
   <div class="convenient-function_area">
@@ -56,21 +58,21 @@
       @foreach ($contacts as $contact)
       <tr class="contact-table_data">
         <td>
-          {{$contact->'first_name'}}
+          {{ $contact['first_name'] }}
         </td>
         <td>
-          {{$contact->'gender'}}
+          {{ $contact['gender'] }}
         </td>
         <td>
-          {{$contact->'email'}}
+          {{ $contact['email'] }}
         </td>
         <td>
           /*categoriesに登録されたデータと紐づけを行うので、リレーションを構築する。今回はcategories（主テーブル）からデータを取ってくるので、belongsToを使用すると考えられる。
-          {{$contact->''}}
+          {{ $contact[''] }}
         </td>
         <td>
           /*お問い合わせ詳細のデータを受け取って、モーダルウィンドウで詳細を表示→一番下に削除機能を入れる。要調査*/
-          {{$contact->'detail'}}
+          {{ $contact->'detail' }}
         </td>
 </main>
 @endsection
