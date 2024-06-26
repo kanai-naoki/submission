@@ -33,7 +33,7 @@ class ContactRequest extends FormRequest
             'address' => ['required'],
             /*'content'は、categoryテーブルから持ってくるので、処理を調べる必要あり*/
             'content' => ['required'],
-            'deteil' => ['required', 'string|max:120'],
+            'detail' => ['required', 'string|max:120'],
         ];
     }
 

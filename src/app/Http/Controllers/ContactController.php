@@ -32,4 +32,10 @@ class ContactController extends Controller
         Contact::find($request->id)->delete();
         return redirect('/');
     }
+
+    public function admin()
+    {
+        $contacts = Contact::Paginate(7);
+        return view('admin', compact('Contacts'));
+    }
 }
