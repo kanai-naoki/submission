@@ -10,6 +10,7 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
         return view('index');
     }
 
@@ -17,11 +18,10 @@ class ContactController extends Controller
     {
         $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'deteil']);
         Contact::create($contact);
-        /*追加後のリダイレクト先は、調べる必要あり*/
         return view('thanks');
     }
 
-    public function confirm($request)
+    public function confirm(ContactRequest $request)
     {
         $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'content', 'detail']);
         return view('confirm', compact('contact'));
@@ -36,6 +36,37 @@ class ContactController extends Controller
     public function admin()
     {
         $contacts = Contact::Paginate(7);
-        return view('admin', compact('Contacts'));
+        return view('admin', compact('contacts'));
     }
+
+    public function search(Request $request)
+    {
+        $contacts = Contact::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->get();
+        $categories = Category::all();
+        return view('admin', compact('contacts', 'categories'));
+    }
+
+    public function downloadCsv()
+    {
+        $contacts = Contact::with('category');
+        $csvHeader = ['first_name', 'last_name', 'email', 'content', 'detail'];
+        $csvData = $users->toArray();
+
+        $response = new StreamedResponse(function () use ($csvHeader, $csvData) {
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, $csvHeader);
+
+            foreach ($csvData as $row) {
+                fputcsv($handle, $row);
+            }
+
+            fclose($handle);
+        }, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="users.csv"',
+        ]);
+
+        return $response;
+    }
+
 }

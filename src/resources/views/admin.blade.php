@@ -21,26 +21,26 @@
 <main>
 
   <div class="search_area">
-    <form action="/contacts" method="get">{{--getかpostなのか調べる必要あり--}}
-        <input type="search" name="search" placeholder="名前や性別を入力してください">
+    <form class="search_form" action="contacts/search" post="get">
+        <input type="search" type="text" name="keyword" value="{{ old('keyword') }}" >
         <select name="gender" id="">性別
             <option value="">全て</option>
-            <option value="1">男性</option>
-            <option value="2">女性</option>
-            <option value="3">その他</option>
+            <option value="">男性</option>
+            <option value="">女性</option>
+            <option value="">その他</option>
         </select>
-        <select name="content" id="">お問い合わせの種類
+        <select name="content" id="content">お問い合わせの種類
             @foreach ($catagories as $category)
-            <option value="">{{ $category->'content' }}</option>
+            <option value="">{{ $category['content'] }}</option>
         </select>
-        <input type="date" name="date" value="">
-        <input type="submit" name="submit" value="検索">
-        <input type="reset" value="リセット">
+        <input type="date">
     </form>
   </div>
   <div class="convenient-function_area">
     <div class="export_area">
-
+      <form action="/csv-download" method="post">
+        <button class="export_button" type="submit">エクスポート</button>
+      </form>
     </div>
     <div class="paginatiion_area">
         {{ $contacts->links() }}
@@ -58,7 +58,7 @@
       @foreach ($contacts as $contact)
       <tr class="contact-table_data">
         <td>
-          {{ $contact['first_name'] }}
+          {{ $contact['first_name'] }}&nbsp;{{ $contact['last_name'] }}
         </td>
         <td>
           {{ $contact['gender'] }}
@@ -66,13 +66,14 @@
         <td>
           {{ $contact['email'] }}
         </td>
-        <td>
-          /*categoriesに登録されたデータと紐づけを行うので、リレーションを構築する。今回はcategories（主テーブル）からデータを取ってくるので、belongsToを使用すると考えられる。
-          {{ $contact[''] }}
+        <td>         
+          {{ $contact['content'] }}
         </td>
         <td>
           /*お問い合わせ詳細のデータを受け取って、モーダルウィンドウで詳細を表示→一番下に削除機能を入れる。要調査*/
-          {{ $contact->'detail' }}
+          {{ $contact['detail'] }}
         </td>
+      </tr>     
+      @endforeach  
 </main>
 @endsection

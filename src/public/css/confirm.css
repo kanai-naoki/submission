@@ -1,2 +1,38 @@
+.headeer_content {
+    text-align: center;
+}
 
+.header_logo {
+    
+}
 
+.confirm-table__header {
+    background: #8B7969;
+    color: #ffffff;
+}
+
+.confirm-table__text {
+    color: #8B7969;
+}
+
+.form__button{
+    text-align: center;
+}
+
+.contact-table_data {
+    color: #ffffff;
+    background: #8B7969;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form__button-submit {
+    background: #82756A;
+    color: #ffffff;
+    padding: 10px 40px;
+}
+
+.form__button-correct {
+    color: #8B7969;
+    font-size: 20px;
+}

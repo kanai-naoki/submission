@@ -6,7 +6,7 @@
 
 @section('content')
 <header>
-<div class="headeer_content">
+<div class="header_content">
     <div class="header_logo">
         <h2>FasionablyLate</h2>
     </div>
@@ -109,12 +109,7 @@
       <div class="form__group-content">
         <div class="form__input--text">
           <input type="address" name="building" placeholder="例:千駄ヶ谷マンション101" value="{{ old('building') }}" />
-        </div>
-        <div class="form__error">
-          @error('email')
-          {{ $message }}
-          @enderror
-        </div>
+        </div>   
       </div>
     </div>
     <div class="form__group">
@@ -124,11 +119,9 @@
       <div class="form__group-content">
         <div class="form__input--text">
           <select name="content" id="">選択してください</select>
-          {{--カテゴリテーブルとリレーションしたら、解除
           @foreach ($categories as $category)
               <option value="">{{ $category['content'] }}</option>
           @endforeach
-          --}}
         </div>
         <div class="form__error">
           @error('content')
@@ -143,7 +136,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <textarea name="detail" cols="30" rows="5" placeholder="お問い合わせ内容をご記載ください" value="{{ old('detail') }}" />
+          <textarea name="detail" cols="30" rows="5" placeholder="お問い合わせ内容をご記載ください" value="{{ old('detail') }}"></textarea>
         </div>
         <div class="form__error">
           @error('detail')
