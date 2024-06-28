@@ -29,8 +29,12 @@
           <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name') }}" />
         </div>
         <div class="form__error">
-        {{--複数のバリデーションをカッコ内に同時に入れて機能するか確認する--}}
-          @error('first_name','last_name')
+          @error('first_name')
+          {{ $message }}
+          @enderror
+        </div>
+        <div class="form__error">
+          @error('last_name')
           {{ $message }}
           @enderror
         </div>
@@ -119,9 +123,11 @@
       <div class="form__group-content">
         <div class="form__input--text">
           <select name="content" id="">選択してください</select>
+          {{--categoriesテーブル紐づけ
           @foreach ($categories as $category)
               <option value="">{{ $category['content'] }}</option>
           @endforeach
+          --}}
         </div>
         <div class="form__error">
           @error('content')

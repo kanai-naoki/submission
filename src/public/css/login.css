@@ -1,0 +1,23 @@
+.register__button-submit {
+    border: 1px solid #D9C6B5;
+    background-color: #E0DFDE;
+    color: #D9C6B5;
+}
+
+.login__content {
+    background: #D9C6B5;
+}
+
+ 
+
+.login-form__heading {
+    color: #8B7969;
+    font-size: 35px;
+    text-align: center;
+}
+
+.form__button-submit {
+    background: #82756A;
+    padding: 10px 40px;
+    color: #ffffff;
+}

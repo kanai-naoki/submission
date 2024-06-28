@@ -11,7 +11,7 @@
         <h1>FasionablyLate</h1>
     </div>
     <div class="register__link">
-        <a class="register__button-submit" href="/register">register</a>
+        <button class="register__button-submit" type="button" href="/register">register</button>
     </div>
 </div>
 </header>
