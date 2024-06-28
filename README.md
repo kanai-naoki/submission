@@ -18,7 +18,7 @@
   ・nginx:1.21.1
 
 ## ER図
-< - - - 作成したER図の画像 - - - >
+![alt text](image-1.png)
 
 ## URL
   ・開発環境：http://localhost/</br>
