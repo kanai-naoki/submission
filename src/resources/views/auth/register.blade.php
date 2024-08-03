@@ -6,12 +6,14 @@
 
 @section('content')
 <header>
-<div class="headeer_content">
+<div class="header_content">
     <div class="header_logo">
         <h1>FasionablyLate</h1>
     </div>
     <div class="register__link">
-        <a class="register__button-submit" href="/login">login</a>
+       <form action="/login" method="post">
+        <button class="register__button-submit" type="button">login</button>
+       </form>
     </div>
 </div>
 </header>
